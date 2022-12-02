@@ -10,9 +10,7 @@ class ElfCalorieParser(val inputFile: File) {
             maxValue = maxOf(sum, maxValue)
             0
           }
-          else -> {
-            sum + line.toInt()
-          }
+          else -> sum + line.toInt()
         }
       }
     }
