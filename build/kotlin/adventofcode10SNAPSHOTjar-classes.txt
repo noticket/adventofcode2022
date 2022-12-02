@@ -1,1 +1,1 @@
-/usr/local/google/home/jsje/adventofcode/build/classes/kotlin/main/ElfCalorieParser.class
+/Users/jsje/adventofcode2022/build/classes/kotlin/main/ElfCalorieParser.class:/Users/jsje/adventofcode2022/build/classes/kotlin/main/RockPaperScissors.class
