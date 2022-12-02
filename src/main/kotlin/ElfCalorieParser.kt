@@ -1,19 +1,29 @@
 import java.io.File
+import java.util.PriorityQueue
 
 class ElfCalorieParser(val inputFile: File) {
   fun findCaloriesForElfWithMostCalories(): Int {
-    var maxValue = Int.MIN_VALUE
-    inputFile.useLines {
-      it.plus("").fold(0) { sum, line ->
-        when (line.trim()) {
-          "" -> {
-            maxValue = maxOf(sum, maxValue)
-            0
-          }
-          else -> sum + line.toInt()
+    return generateMaxQueue().poll()
+  }
+
+  fun findCaloriesForElvesWithThreeMostCalories(): Int {
+    val queue = generateMaxQueue()
+    return queue.poll() + queue.poll() + queue.poll()
+  }
+  private fun generateMaxQueue(): PriorityQueue<Int> {
+    val elvesMaxHeap: PriorityQueue<Int> = PriorityQueue(reverseOrder())
+    inputFile.useLines { lines ->
+      var currentValue = 0
+      val terminator = -1
+      for (value in lines.plus(" ").map { it.trim() }.map { if (it.isEmpty()) terminator else it.toInt() }) {
+        if (value == terminator) {
+          elvesMaxHeap.offer(currentValue)
+          currentValue = 0
+        } else {
+          currentValue += value
         }
       }
     }
-    return maxValue
+    return elvesMaxHeap
   }
 }

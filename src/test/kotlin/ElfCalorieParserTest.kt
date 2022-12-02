@@ -11,4 +11,10 @@ internal class ElfCalorieParserTest {
     val parser = ElfCalorieParser(File(javaClass.getResource("/input.txt").file))
     println(parser.findCaloriesForElfWithMostCalories())
   }
+
+  @Test
+  fun findCaloriesForElfWithThreeMostCalories() {
+    val parser = ElfCalorieParser(File(javaClass.getResource("/input.txt").file))
+    println(parser.findCaloriesForElvesWithThreeMostCalories())
+  }
 }
