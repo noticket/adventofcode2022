@@ -3,7 +3,7 @@ import java.io.File
 class ElfCalorieParser(val inputFile: File) {
   fun findCaloriesForElfWithMostCalories(): Int {
     var maxValue = Int.MIN_VALUE
-    inputFile.useLines {
+    inputFile.useLines.plus("") {
       it.fold(0) { sum, line ->
         when (line.trim()) {
           "" -> {
