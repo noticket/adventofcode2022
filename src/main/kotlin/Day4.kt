@@ -3,14 +3,14 @@ import java.io.File
 class Day4(val inputFile: File) {
 
     private class ElfRange(rangeString: String) {
-        private val range = rangeString.split('-').let { (start, end) -> start.toInt().rangeTo(end.toInt()) }.toSet()
+        private val range = rangeString.split('-').let { (start, end) -> start.toInt().rangeTo(end.toInt()) }
 
         fun isFullyOverlappingWith(other: ElfRange): Boolean {
-            return range.intersect(other.range).let { it.size == range.size || it.size == other.range.size }
+            return range.intersect(other.range).let { it.size == range.count() || it.size == other.range.count() }
         }
 
         fun isOverlappingWith(other: ElfRange): Boolean {
-            return range.union(other.range).size < (range.size + other.range.size)
+            return range.union(other.range).size < (range.count() + other.range.count())
         }
     }
 
