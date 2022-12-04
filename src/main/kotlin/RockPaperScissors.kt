@@ -37,9 +37,8 @@ class RockPaperScissors(val inputFile: File) {
             it.fold(0) { sum, line ->
                 val trimmed = line.trim()
                 if (trimmed.isEmpty()) return sum
-                val plays = trimmed.split(" ")
-                val opponent = plays[0]
-                val mine = desiredOutcomeMap.getValue(plays[1]).getValue(opponent)
+                val (opponent, outcome) = trimmed.split(" ")
+                val mine = desiredOutcomeMap.getValue(outcome).getValue(opponent)
                 sum + calculateValue(opponent, mine)
             }
         }
