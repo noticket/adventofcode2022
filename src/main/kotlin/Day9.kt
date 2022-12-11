@@ -51,7 +51,6 @@ class Day9 (private val numberOfKnots: Int, private val inputFile: File) {
     private fun ensureTailIsCloseEnough(head: Point, tail: Point, visitedPoints: MutableSet<Point>) {
         var horizontalDistance = head.x - tail.x
         var verticalDistance = head.y - tail.y
-        var allPoints: Set<Point> = visitedPoints
         while (abs(horizontalDistance) + abs(verticalDistance) >= 2 &&
             !(abs(horizontalDistance) == 1 && abs(verticalDistance) == 1)) {
             val horizontalDirection = when {

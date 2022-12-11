@@ -81,7 +81,6 @@ class Day7(val inputFile: File) {
         val totalDiskSpace = 70000000L
         val requiredDiskSpace = 30000000L
         val root = computeHierarchy()
-        val availableSize = root.size
         return getDirectoriesBiggerThan(requiredDiskSpace - (totalDiskSpace - root.size), root, listOf()).sortedBy { it.size }.first().size
     }
 

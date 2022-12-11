@@ -45,7 +45,7 @@ class Day10(private val inputFile: File) {
         }
     }
 
-    private fun getLitOrDarkPixelChar(cycleCount: Int, registerX: Int): Char? {
+    private fun getLitOrDarkPixelChar(cycleCount: Int, registerX: Int): Char {
         return if (abs(registerX - ((cycleCount-1) % 40)) <= 1) '#' else '.'
     }
 
