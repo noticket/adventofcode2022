@@ -24,7 +24,9 @@ class Day11(private val inputFile: File) {
         val divideByThree = { input: Long -> input / 3 }
 
         // Make a number of which all divisors are a common factor... I don't remember how to do least multiple or
-        // greatest factor so just multiply everything together to be the limit for worry
+        // greatest factor so just multiply everything together to be the limit for worry, everything higher than this
+        // number is useless anyway. We will use mod of this number to reset the worry without modifying which conditions
+        // the number satisfies. 
         val multiple = monkeys.drop(1).fold(monkeys.first().divisor) { acc, monkey ->
             acc * monkey.divisor
         }
