@@ -89,7 +89,7 @@ class Day13(private val inputFile: File) {
                 return parseList(0, packet).second
             }
 
-            fun parseNextValue(startingIndex: Int, packet: String): Pair<Int, PacketEntry> {
+            private fun parseNextValue(startingIndex: Int, packet: String): Pair<Int, PacketEntry> {
                 val builder = StringBuilder()
                 var index = startingIndex
                 while (index < packet.length && packet[index].isDigit()) {
@@ -99,7 +99,7 @@ class Day13(private val inputFile: File) {
                 return Pair(index, PacketEntry(value = builder.toString().toInt()))
             }
 
-            fun parseList(startingIndex: Int, packet: String): Pair<Int, PacketEntry> {
+            private fun parseList(startingIndex: Int, packet: String): Pair<Int, PacketEntry> {
                 assert(packet[startingIndex] == '[')
                 var list = mutableListOf<PacketEntry>()
                 var index = startingIndex + 1
