@@ -13,12 +13,12 @@ class Day13(private val inputFile: File) {
     fun decoderKey(): Int {
         val divider2 = PacketParser.parsePacket("[[2]]")
         val divider6 = PacketParser.parsePacket("[[6]]")
-        val packetPairs = inputFile.readLines().filter { it.isNotBlank() }.map { PacketParser.parsePacket(it) }
+        val packets = inputFile.readLines().filter { it.isNotBlank() }.map { PacketParser.parsePacket(it) }
             .plus(divider2)
             .plus(divider6)
             .sortedWith { left, right -> if (left.correctOrder(right)) -1 else 1 }
             .toList()
-        return (packetPairs.indexOf(divider2) + 1) * (packetPairs.indexOf(divider6) + 1)
+        return (packets.indexOf(divider2) + 1) * (packets.indexOf(divider6) + 1)
     }
 
     data class PacketEntry(val value: Int? = null, val list: List<PacketEntry>? = null) {
