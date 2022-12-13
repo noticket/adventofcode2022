@@ -16,7 +16,7 @@ class Day13(private val inputFile: File) {
         val packetPairs = inputFile.readLines().filter { it.isNotBlank() }.map { PacketParser.parsePacket(it) }
             .plus(divider2)
             .plus(divider6)
-            .sortedWith { left, right -> if (left.correctOrder(right)!!) -1 else 1 }
+            .sortedWith { left, right -> if (left.correctOrder(right)) -1 else 1 }
             .toList()
         return (packetPairs.indexOf(divider2) + 1) * (packetPairs.indexOf(divider6) + 1)
     }
@@ -40,7 +40,7 @@ class Day13(private val inputFile: File) {
             }
         }
 
-        fun correctOrder(right: PacketEntry): Boolean? {
+        fun correctOrder(right: PacketEntry): Boolean {
             return correctOrderInternal(right) ?: throw IllegalStateException("Unable to find an answer")
         }
 
@@ -125,7 +125,7 @@ class Day13(private val inputFile: File) {
 
     data class PacketPair(val index: Int, val left: PacketEntry, val right: PacketEntry) {
         fun areInCorrectOrder(): Boolean {
-            return left.correctOrder(right)!!
+            return left.correctOrder(right)
         }
     }
 }
